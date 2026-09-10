@@ -1,0 +1,712 @@
+{
+  "course": {
+    "id": "modern-cpp",
+    "title": "Modern C++",
+    "description": "A deliberate path from first principles to modern practice.",
+    "moduleIds": ["foundations", "functions", "collections", "objects", "ownership", "modern"]
+  },
+  "modules": [
+    {
+      "id": "foundations",
+      "title": "C++ Foundations",
+      "description": "From your first line of code to programs that make decisions.",
+      "number": 1,
+      "lessonIds": ["first-program", "variables", "input-operators", "control-flow"]
+    },
+    {
+      "id": "functions",
+      "title": "Functions",
+      "description": "Turn a sequence of instructions into a set of clear responsibilities.",
+      "number": 2,
+      "lessonIds": ["function-basics", "return-overload", "scope", "decomposition"]
+    },
+    {
+      "id": "collections",
+      "title": "Core Data Structures",
+      "description": "Choose the right way to store, find, and transform information.",
+      "number": 3,
+      "lessonIds": ["strings", "sequences", "maps-sets", "iterators"]
+    },
+    {
+      "id": "objects",
+      "title": "Object-Oriented C++",
+      "description": "Model useful types with clear boundaries and predictable behavior.",
+      "number": 4,
+      "lessonIds": ["classes", "constructors", "polymorphism", "composition"]
+    },
+    {
+      "id": "ownership",
+      "title": "Memory and Ownership",
+      "description": "Understand lifetimes. Make resource safety part of the design.",
+      "number": 5,
+      "lessonIds": ["pointers", "lifetimes", "smart-pointers", "raii-move"]
+    },
+    {
+      "id": "modern",
+      "title": "Modern C++",
+      "description": "Express more with types, algorithms, and the C++17 standard library.",
+      "number": 6,
+      "lessonIds": ["auto-ranges", "lambdas", "templates", "errors"]
+    }
+  ],
+  "lessons": [
+    {
+      "id": "first-program",
+      "title": "Your First Program",
+      "description": "Meet the structure every C++ program starts with.",
+      "moduleId": "foundations",
+      "duration": 8,
+      "objectives": ["Recognize main and a statement", "Print text with std::cout"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A program is a precise set of instructions. In C++, execution begins in a function named main. The braces define its body: the instructions that run when the program starts. Each statement usually ends with a semicolon.\n\nBefore you run a program, a compiler checks the source code and translates it into executable instructions. A compiler error means this translation failed; it is different from a program that runs but gives the wrong answer."
+        },
+        {
+          "title": "See it in code",
+          "body": "#include <iostream> makes the standard input and output tools available. std::cout is the standard output stream; << sends a value into it. The text between double quotes is a string literal. The escape sequence \\n adds a new line.\n\nReturning 0 from main reports successful execution. std:: is a namespace qualifier: it says the name belongs to the standard library.",
+          "code": "#include <iostream>\n\nint main() {\n    std::cout << \"Hello, C++!\\n\";\n    return 0;\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Capitalization and punctuation matter. Main is different from main, and a missing semicolon prevents compilation. Output is also exact: printing a greeting is different from printing the quotation marks around it. Try changing one small thing and reading the compiler feedback."
+        }
+      ],
+      "takeaway": "C++ starts at main. Compile to check the program; run to observe its behavior.",
+      "exerciseIds": ["practice-first-program"],
+      "nextId": "variables"
+    },
+    {
+      "id": "variables",
+      "title": "Variables and Data Types",
+      "description": "Give a value a name and a useful type.",
+      "moduleId": "foundations",
+      "duration": 8,
+      "objectives": ["Initialize variables", "Choose int, double, char, and bool"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A variable is a named object that holds a value. Its type determines which values it can represent and which operations make sense. int stores whole numbers, double stores approximate real numbers, char stores one character, and bool represents true or false.\n\nInitialize an object when you create it. Brace initialization helps catch narrowing: int count{2.5} is rejected instead of silently discarding the fraction."
+        },
+        {
+          "title": "See it in code",
+          "body": "The name is how later statements refer to the object. const means you cannot change the value after initialization. Single quotes enclose one character; double quotes enclose text. A bool prints as 1 or 0 by default; std::boolalpha changes that to true or false.",
+          "code": "#include <iostream>\n\nint main() {\n    int age{20};\n    double height{1.85};\n    char grade{'A'};\n    bool isStudent{true};\n    const int months{12};\n    std::cout << age << ' ' << months << '\\n';\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "A type is a promise, but its range is finite. Overflow of a signed integer is undefined behavior. Use long long when your problem needs a larger whole-number range, and choose bounds before doing arithmetic. Uninitialized local integers do not reliably start at zero."
+        }
+      ],
+      "takeaway": "Choose a type deliberately, initialize immediately, and use const when a value should stay fixed.",
+      "exerciseIds": ["practice-variables"],
+      "previousId": "first-program",
+      "nextId": "input-operators"
+    },
+    {
+      "id": "input-operators",
+      "title": "Input, Output, and Operators",
+      "description": "Turn incoming values into a result.",
+      "moduleId": "foundations",
+      "duration": 8,
+      "objectives": ["Read whitespace-separated input", "Use arithmetic and comparison operators"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "std::cin reads values from standard input. The extraction operator >> parses a value according to the destination type. Spaces and newlines separate numeric input, so the same program can read two numbers on one line or on separate lines.\n\nThe arithmetic operators are +, -, *, /, and %. Multiplication and division bind more tightly than addition and subtraction. Parentheses make your intention explicit."
+        },
+        {
+          "title": "See it in code",
+          "body": "Integer division discards the fractional part toward zero: 7 / 2 is 3, while 7 / 2.0 is 3.5. % gives the remainder for integers. Comparisons such as a < b produce a bool. Equality uses ==; the single = assigns a value.",
+          "code": "#include <iostream>\n\nint main() {\n    int a{}, b{};\n    std::cin >> a >> b;\n    std::cout << \"sum: \" << a + b << \"\\n\";\n    std::cout << \"half: \" << a / 2.0 << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Never divide by zero. Reading can fail when input is missing or has the wrong type: if (!(std::cin >> a)) detects that failure. Exercises with valid-input constraints let you focus on the algorithm; real applications should validate input at their boundary."
+        }
+      ],
+      "takeaway": "Read values into appropriate types, calculate, and print only the requested output.",
+      "exerciseIds": ["practice-input-operators"],
+      "previousId": "variables",
+      "nextId": "control-flow"
+    },
+    {
+      "id": "control-flow",
+      "title": "Conditions and Loops",
+      "description": "Choose a path. Repeat a useful operation.",
+      "moduleId": "foundations",
+      "duration": 12,
+      "objectives": ["Branch with if and else", "Repeat with for and while"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "An if statement runs its body only when a condition is true. An else provides an alternative. Conditions can combine comparisons using && (both), || (either), and ! (not). Use braces even for short branches so later edits stay unambiguous.\n\nA loop repeats work. A for loop groups an initialization, a condition checked before each iteration, and an update. A while loop is useful when you do not know the iteration count in advance."
+        },
+        {
+          "title": "See it in code",
+          "body": "This loop starts at 1, continues through 6, and increments number after each iteration. The condition inside accepts even numbers, so the output is 2, 4, and 6 on separate lines. ++number increments by one. break exits the nearest loop; continue skips to its next iteration.",
+          "code": "#include <iostream>\n\nint main() {\n    for (int number{1}; number <= 6; ++number) {\n        if (number % 2 == 0) {\n            std::cout << number << \"\\n\";\n        }\n    }\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Check the first iteration, the last iteration, and the case with no iterations. Many loop bugs come from using < where <= was intended. Every while loop needs a way to make progress toward termination. An endless loop will be stopped by the practice time limit."
+        }
+      ],
+      "takeaway": "Conditions select work. Loops repeat it. Boundaries determine whether that work is correct.",
+      "exerciseIds": ["practice-control-flow"],
+      "previousId": "input-operators",
+      "nextId": "function-basics"
+    },
+    {
+      "id": "function-basics",
+      "title": "Functions and Parameters",
+      "description": "Name a small operation and give it clear inputs.",
+      "moduleId": "functions",
+      "duration": 8,
+      "objectives": ["Declare and call a function", "Pass values as parameters"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A function is a named operation with inputs, a result type, and a body. Parameters describe the inputs; arguments are the values supplied by a call. Defining a function before main lets the compiler see its declaration before it is used.\n\nPassing an int by value creates a separate parameter object. Changing that parameter does not change the caller's variable. This is often a useful default for small values."
+        },
+        {
+          "title": "See it in code",
+          "body": "The first int is the result type. int value is one parameter. Calling square(7) initializes value with 7 and evaluates to 49. The return statement supplies the result and immediately leaves that function. A void function performs work without returning a value.",
+          "code": "#include <iostream>\n\nint square(int value) {\n    return value * value;\n}\n\nint main() {\n    std::cout << square(7) << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Choose names that describe what a function does. A function named square should not unexpectedly print a message or change unrelated state. Small operations are easier to test because a few inputs can cover their behavior. Separate calculation from reading and printing."
+        }
+      ],
+      "takeaway": "A useful function has one responsibility, explicit inputs, and a predictable result.",
+      "exerciseIds": ["practice-function-basics"],
+      "previousId": "control-flow",
+      "nextId": "return-overload"
+    },
+    {
+      "id": "return-overload",
+      "title": "Return Values and Overloading",
+      "description": "Make different operations share a meaningful name.",
+      "moduleId": "functions",
+      "duration": 8,
+      "objectives": ["Return on every required path", "Understand overload resolution"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A non-void function must return a suitable value on every path that reaches its end. An early return can handle a special case and keep the normal path straightforward. Returning a value is different from printing it: a returned value can be used by another calculation.\n\nC++ allows function overloading: several functions can have the same name if their parameter lists differ. The compiler chooses an overload from the argument types. The return type alone cannot distinguish overloads."
+        },
+        {
+          "title": "See it in code",
+          "body": "twice(4) uses the int overload. twice(2.5) uses the double overload. Both functions describe the same idea, but preserve their input type. An implicit conversion may also make a candidate viable; when multiple candidates are equally good, the call is ambiguous and compilation fails.",
+          "code": "#include <iostream>\n\nint twice(int value) { return value * 2; }\ndouble twice(double value) { return value * 2.0; }\n\nint main() {\n    std::cout << twice(4) << \"\\n\";\n    std::cout << twice(2.5) << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Do not overload unrelated behavior just because a name is available. Prefer a consistent meaning across overloads. Avoid a maze of numeric conversions; use a clear type at the call site. When designing error paths, consider whether every branch still produces a valid result."
+        }
+      ],
+      "takeaway": "Return values compose. Overloads should express one idea for different types.",
+      "exerciseIds": ["practice-return-overload"],
+      "previousId": "function-basics",
+      "nextId": "scope"
+    },
+    {
+      "id": "scope",
+      "title": "Scope and References",
+      "description": "Understand which object a name refers to.",
+      "moduleId": "functions",
+      "duration": 8,
+      "objectives": ["Identify block scope", "Modify a caller through a reference"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "Scope is the region where a name can be used. A variable declared inside a block is available from its declaration to the end of that block. A nested block can see enclosing names, but an outer block cannot see a variable declared inside it.\n\nA reference is an alias for an existing object. In a parameter such as int& value, the function works with the caller's object. A const reference permits reading without copying but prevents modification through that reference."
+        },
+        {
+          "title": "See it in code",
+          "body": "value refers to score, so changing value changes score. bonus exists only in addBonus. Without the & in the parameter, the function would modify a copy and score would remain 10. Reference parameters make mutation possible, so the function name and interface should make it expected.",
+          "code": "#include <iostream>\n\nvoid addBonus(int& value) {\n    const int bonus{5};\n    value += bonus;\n}\n\nint main() {\n    int score{10};\n    addBonus(score);\n    std::cout << score << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Avoid shadowing: giving an inner variable the same name as an outer variable can hide the object you meant to change. Never return a reference to a local variable, because the object dies when the function ends. We will return to lifetime in Memory and Ownership."
+        }
+      ],
+      "takeaway": "Scope controls names. References connect names to existing objects; lifetime controls whether those objects still exist.",
+      "exerciseIds": ["practice-scope"],
+      "previousId": "return-overload",
+      "nextId": "decomposition"
+    },
+    {
+      "id": "decomposition",
+      "title": "Designing Small Functions",
+      "description": "Make a problem easier by dividing its responsibilities.",
+      "moduleId": "functions",
+      "duration": 8,
+      "objectives": ["Separate I/O from calculation", "Test an operation at its boundaries"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "Decomposition means dividing a problem into pieces with clear responsibilities. Start by describing the data entering an operation and the result leaving it. Keep user interaction at the edge; let the calculation itself return a result.\n\nA pure calculation depends only on its inputs and does not change external state. That makes it easier to reason about and reuse. Not every function must be pure, but combining input, calculation, and output in every function makes testing harder."
+        },
+        {
+          "title": "See it in code",
+          "body": "main handles the input and output. sumThrough calculates a number and knows nothing about streams. That separation lets you test sumThrough with zero, one, and a larger value. A helpful comment explains a constraint or decision; it does not merely repeat the next statement.",
+          "code": "#include <iostream>\n\nint sumThrough(int n) {\n    int total{};\n    for (int i{1}; i <= n; ++i) total += i;\n    return total;\n}\n\nint main() {\n    int n{};\n    std::cin >> n;\n    std::cout << sumThrough(n) << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "A function's contract includes assumptions. Does sumThrough accept negative input? Are the values small enough for int? State the domain before implementing. For an algorithm, reason about a small example by hand, then check a boundary that could invalidate the same logic."
+        }
+      ],
+      "takeaway": "Keep the boundary simple, give calculations clear contracts, and test the smallest valid input.",
+      "exerciseIds": ["practice-decomposition"],
+      "previousId": "scope",
+      "nextId": "strings"
+    },
+    {
+      "id": "strings",
+      "title": "Strings and Character Sequences",
+      "description": "Work with text as a sequence of characters.",
+      "moduleId": "collections",
+      "duration": 8,
+      "objectives": ["Use std::string and getline", "Inspect characters safely"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "std::string owns a sequence of characters. You can ask for its size, append text with +=, compare strings, and access characters by index. Indices start at zero, so the last valid index is size() - 1 when the string is not empty.\n\nstd::cin >> text reads one whitespace-delimited word. std::getline reads a complete line, including spaces, up to the newline. Choose the operation based on the input format."
+        },
+        {
+          "title": "See it in code",
+          "body": "A range-based loop, for (char ch : text), visits each stored character. size() returns an unsigned size type. Avoid subtracting one from the size of an empty string. operator[] does not check a position; at() checks, but its error path throws, which this browser runtime does not support.",
+          "code": "#include <iostream>\n#include <string>\n\nint main() {\n    std::string name;\n    std::getline(std::cin, name);\n    std::cout << \"Hello, \" << name << \"!\\n\";\n    std::cout << name.size() << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "A std::string is a sequence of bytes, not a Unicode text editor. A non-ASCII character may occupy several bytes in UTF-8. The practice exercises specify ASCII when they ask you to count individual letters. If you mix >> and getline, consume the leftover newline deliberately."
+        }
+      ],
+      "takeaway": "Choose word input or line input deliberately, and stay within the sequence's bounds.",
+      "exerciseIds": ["practice-strings"],
+      "previousId": "decomposition",
+      "nextId": "sequences"
+    },
+    {
+      "id": "sequences",
+      "title": "Arrays, std::array, and std::vector",
+      "description": "Choose a sequence with the right size behavior.",
+      "moduleId": "collections",
+      "duration": 10,
+      "objectives": [
+        "Distinguish fixed and dynamic size",
+        "Use vector without out-of-bounds access"
+      ],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A built-in array stores a fixed number of elements next to each other. std::array wraps a fixed-size sequence in a standard-library interface, including size() and iterators. std::vector owns a sequence whose size can change at runtime. Prefer these library containers over manual memory management.\n\nA vector tracks size (constructed elements) separately from capacity (allocated storage). reserve changes capacity; it does not create elements. push_back appends an element and increases size."
+        },
+        {
+          "title": "See it in code",
+          "body": "The type std::array<int, 3> includes its length. A vector can instead get its length from input. Constructing std::vector<int> values(n) creates n zero-initialized integers. After that, indices from 0 through n - 1 are valid. An empty vector has no valid element index.",
+          "code": "#include <iostream>\n#include <array>\n#include <vector>\n\nint main() {\n    std::array<int, 3> fixed{2, 4, 6};\n    std::vector<int> values{fixed.begin(), fixed.end()};\n    values.push_back(8);\n    for (int value : values) std::cout << value << \" \";\n    std::cout << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Appending may reallocate a vector's storage, invalidating references, pointers, and iterators to its elements. Do not keep such a reference across an operation that may reallocate. Favor loops over valid elements and avoid guessing capacity-related behavior."
+        }
+      ],
+      "takeaway": "Use std::array for a fixed count and std::vector for a runtime count. Size determines valid access.",
+      "exerciseIds": ["practice-sequences"],
+      "previousId": "strings",
+      "nextId": "maps-sets"
+    },
+    {
+      "id": "maps-sets",
+      "title": "Maps and Sets",
+      "description": "Organize values by identity instead of position.",
+      "moduleId": "collections",
+      "duration": 8,
+      "objectives": ["Count with std::map", "Deduplicate with std::set"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "std::map stores unique keys associated with values. std::set stores unique keys alone. Their default ordering uses the key's less-than comparison; iterating visits keys in sorted order. Insertion, lookup, and removal are logarithmic in the number of elements.\n\nUse a map when you need an association, such as a word and its frequency. Use a set when only membership matters. Both express an intention more clearly than repeatedly searching an unsorted vector."
+        },
+        {
+          "title": "See it in code",
+          "body": "counts[word] creates a missing key with a value-initialized int (zero), then ++ increments it. That is convenient for counting. For a read-only lookup, find is different: it returns an iterator or end() without adding a key. The pair stores the key in first and value in second.",
+          "code": "#include <iostream>\n#include <map>\n#include <string>\n\nint main() {\n    std::map<std::string, int> counts;\n    for (const auto& word : {\"blue\", \"red\", \"blue\"}) ++counts[word];\n    for (const auto& entry : counts) {\n        std::cout << entry.first << \" \" << entry.second << \"\\n\";\n    }\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Using operator[] merely to ask whether a key exists changes the map. Check find(key) != end() instead. std::unordered_map is a hash-based alternative with average constant-time lookup, but its iteration order is unspecified. Do not depend on it for sorted output."
+        }
+      ],
+      "takeaway": "Pick a map for associations and a set for unique membership. Lookup should not accidentally mutate data.",
+      "exerciseIds": ["practice-maps-sets"],
+      "previousId": "sequences",
+      "nextId": "iterators"
+    },
+    {
+      "id": "iterators",
+      "title": "Iterators and Ranges",
+      "description": "Describe a sequence without tying an algorithm to a container.",
+      "moduleId": "collections",
+      "duration": 8,
+      "objectives": ["Use begin and end", "Understand half-open ranges"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "An iterator identifies a position in a sequence. begin() points to the first element and end() points one past the last element. The range [begin, end) includes the first position and excludes the second. For an empty container, begin() equals end().\n\nAlgorithms use this convention so they can work with different containers. You can advance an iterator, compare it to the end, and dereference a valid position with *. Not every iterator supports arithmetic or random access."
+        },
+        {
+          "title": "See it in code",
+          "body": "std::sort rearranges this vector in ascending order. It requires random-access iterators, which vector provides. The loop dereferences it only after checking it != end(). A range-based for loop expresses the same traversal more concisely when you do not need the iterator itself.",
+          "code": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    std::vector<int> values{8, 3, 5, 1};\n    std::sort(values.begin(), values.end());\n    for (auto it = values.begin(); it != values.end(); ++it) {\n        std::cout << *it << \" \";\n    }\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Never dereference end(). An iterator can also become invalid when a container changes: vector reallocation is a common example. Read the operation's invalidation rules before keeping an iterator across insertion or deletion. Sorting changes values at positions, even if the storage remains valid."
+        }
+      ],
+      "takeaway": "A half-open range includes begin and excludes end. Check validity before dereferencing.",
+      "exerciseIds": ["practice-iterators"],
+      "previousId": "maps-sets",
+      "nextId": "classes"
+    },
+    {
+      "id": "classes",
+      "title": "Classes and Objects",
+      "description": "Create a type that combines data with useful behavior.",
+      "moduleId": "objects",
+      "duration": 8,
+      "objectives": ["Define a class", "Create independent objects"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A class defines a type. An object is an instance of that type, with its own data. Member functions describe operations on the object. A struct and a class have the same capabilities in C++; their main difference is default access: public for struct and private for class.\n\nStart with a type that represents a real concept in the program. Group data because it has a shared meaning, rather than collecting unrelated variables in a class."
+        },
+        {
+          "title": "See it in code",
+          "body": "card contains its own width and height. The dot operator accesses a member. area() const promises that this operation will not modify the object through this. The semicolon after the class definition is required. Another Rectangle object would hold separate dimensions.",
+          "code": "#include <iostream>\n\nstruct Rectangle {\n    int width;\n    int height;\n    int area() const { return width * height; }\n};\n\nint main() {\n    Rectangle card{8, 5};\n    std::cout << card.area() << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Public data is reasonable for a simple aggregate with no special constraints. When valid state needs enforcement, hide the representation and offer operations that preserve the rules. A class does not automatically make an application better: use it when the type clarifies the model."
+        }
+      ],
+      "takeaway": "A class defines a vocabulary for your program; each object carries its own state.",
+      "exerciseIds": ["practice-classes"],
+      "previousId": "iterators",
+      "nextId": "constructors"
+    },
+    {
+      "id": "constructors",
+      "title": "Constructors and Encapsulation",
+      "description": "Make a type start valid and stay valid.",
+      "moduleId": "objects",
+      "duration": 8,
+      "objectives": ["Initialize members in a constructor", "Protect an invariant"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A constructor initializes an object. It has the same name as the class and no return type. The member initializer list follows a colon and initializes members before the constructor body runs. Prefer initialization to assigning members after creation.\n\nAn invariant is a rule that should remain true for every usable object of the type. Encapsulation hides representation so public operations can enforce that rule. A nonnegative balance, for example, should not be changed through an unchecked public integer."
+        },
+        {
+          "title": "See it in code",
+          "body": "balance_ is private because class members are private by default. Only the class's own operations can change it directly. explicit prevents this single-argument constructor from being used for unwanted implicit conversions. balance() exposes information without exposing mutation.",
+          "code": "#include <iostream>\n\nclass Account {\n    int balance_;\npublic:\n    explicit Account(int initial) : balance_{initial < 0 ? 0 : initial} {}\n    void deposit(int amount) { if (amount > 0) balance_ += amount; }\n    int balance() const { return balance_; }\n};\n\nint main() {\n    Account wallet{20};\n    wallet.deposit(5);\n    std::cout << wallet.balance() << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Members initialize in their declaration order, regardless of their order in the initializer list. Keep both orders consistent. Validation also needs an error policy: rejecting an invalid operation, returning a status, and silently clamping input are different product decisions. State the behavior explicitly."
+        }
+      ],
+      "takeaway": "Constructors establish valid state; public operations preserve it.",
+      "exerciseIds": ["practice-constructors"],
+      "previousId": "classes",
+      "nextId": "polymorphism"
+    },
+    {
+      "id": "polymorphism",
+      "title": "Inheritance and Polymorphism",
+      "description": "Use one interface for several implementations.",
+      "moduleId": "objects",
+      "duration": 12,
+      "objectives": ["Override a virtual function", "Use a virtual destructor in an interface"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "Public inheritance expresses an is-a relationship: a derived object can be used through a base interface. A virtual member function allows the implementation to be selected from the actual object type at runtime. This is dynamic polymorphism.\n\nUse an interface when different objects must answer the same operation. An abstract base class can declare a pure virtual function with = 0, requiring concrete derived classes to implement it."
+        },
+        {
+          "title": "See it in code",
+          "body": "The Shape reference refers to a Square, so shape.area() calls Square::area. override asks the compiler to check that a function really overrides a base virtual function. A virtual destructor supports correct destruction when a derived object is deleted through a base pointer.",
+          "code": "#include <iostream>\n\nstruct Shape {\n    virtual int area() const = 0;\n    virtual ~Shape() = default;\n};\nstruct Square : Shape {\n    int side;\n    explicit Square(int s) : side{s} {}\n    int area() const override { return side * side; }\n};\n\nint main() {\n    Square square{4};\n    const Shape& shape = square;\n    std::cout << shape.area() << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Copying a derived object into a base object can discard its derived part: object slicing. Use a reference or an owning smart pointer for polymorphic objects. Inheritance also couples types; a has-a relationship is usually better represented by composition."
+        }
+      ],
+      "takeaway": "An interface specifies behavior. Virtual dispatch chooses the implementation belonging to the actual object.",
+      "exerciseIds": ["practice-polymorphism"],
+      "previousId": "constructors",
+      "nextId": "composition"
+    },
+    {
+      "id": "composition",
+      "title": "Composition and Value Types",
+      "description": "Build larger types from smaller, dependable parts.",
+      "moduleId": "objects",
+      "duration": 8,
+      "objectives": ["Model has-a relationships", "Prefer the rule of zero"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "Composition means a type contains other objects. A contact has a name and a phone number; a contact book has a collection of contacts. The containing object controls the lifetime of its members, so destruction happens automatically in reverse construction order.\n\nA value type behaves like a value: copying it produces an independent object with equivalent content. Standard containers and strings handle their own resources, so your class often needs no custom destructor, copy constructor, or assignment operator. This is the rule of zero."
+        },
+        {
+          "title": "See it in code",
+          "body": "Each Contact owns its strings. Changing copy.phone does not change original.phone. Compiler-generated special member functions perform the appropriate member-wise operations. By choosing members that already manage resources safely, you keep the surrounding class small.",
+          "code": "#include <iostream>\n#include <string>\n\nstruct Contact {\n    std::string name;\n    std::string phone;\n};\n\nint main() {\n    Contact original{\"Ada\", \"123\"};\n    Contact copy = original;\n    copy.phone = \"456\";\n    std::cout << original.phone << \" \" << copy.phone << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "A member reference or raw pointer does not create an independent owned object when copied. That may be intentional, but it changes the lifetime contract. Do not write custom ownership machinery when a standard value type expresses the relationship correctly."
+        }
+      ],
+      "takeaway": "Compose types that already manage themselves. Let ordinary values remain ordinary values.",
+      "exerciseIds": ["practice-composition"],
+      "previousId": "polymorphism",
+      "nextId": "pointers"
+    },
+    {
+      "id": "pointers",
+      "title": "References and Pointers",
+      "description": "Separate an object from a way to refer to it.",
+      "moduleId": "ownership",
+      "duration": 8,
+      "objectives": [
+        "Take an address and dereference safely",
+        "Distinguish aliases from ownership"
+      ],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A pointer holds an address. &object obtains an object's address; *pointer accesses the object at that address. A pointer can be reassigned and can be null. A reference is an alias initialized to refer to an object and cannot later be reseated.\n\nNeither a raw pointer nor a reference automatically owns the referenced object. They are often best used for temporary, non-owning access. The object must outlive every access through them."
+        },
+        {
+          "title": "See it in code",
+          "body": "pointer and alias both lead to value. The operations change the same integer, producing 10. nullptr is the null pointer value. Test pointer != nullptr before dereferencing a pointer that may be absent. A reference communicates that a valid object is expected, but does not itself extend an arbitrary object's lifetime.",
+          "code": "#include <iostream>\n\nint main() {\n    int value{7};\n    int* pointer{&value};\n    int& alias{value};\n    *pointer += 2;\n    alias += 1;\n    std::cout << value << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "A pointer can be non-null and still dangle because its object has already been destroyed. Null checks do not solve lifetime problems. Do not return a pointer to a local variable, and do not use a vector element pointer after reallocation."
+        }
+      ],
+      "takeaway": "An address is a way to reach an object, not proof that it is alive or owned.",
+      "exerciseIds": ["practice-pointers"],
+      "previousId": "composition",
+      "nextId": "lifetimes"
+    },
+    {
+      "id": "lifetimes",
+      "title": "Storage, Lifetimes, and Dynamic Memory",
+      "description": "Know when an object is created and when it disappears.",
+      "moduleId": "ownership",
+      "duration": 8,
+      "objectives": [
+        "Distinguish automatic and dynamic storage",
+        "Avoid manual allocation when a container fits"
+      ],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "An automatic local object is destroyed when execution leaves its scope. These objects are commonly implemented using the call stack, but lifetime is the language-level rule that matters. Dynamic storage lasts until it is explicitly released by its owner, even if the allocating function returns.\n\nThe traditional new expression allocates and constructs; delete destroys and deallocates. Matching these operations manually is easy to get wrong, especially with early returns. Prefer containers and smart pointers that encode ownership."
+        },
+        {
+          "title": "See it in code",
+          "body": "local is destroyed at its closing brace, but values[0] is an independent copy and remains valid. The vector object has automatic storage duration; its element buffer is usually dynamically allocated and managed by the vector. This combines convenient local lifetime with runtime-sized data.",
+          "code": "#include <iostream>\n#include <vector>\n\nint main() {\n    int count{3};\n    std::vector<int> values(count, 5);\n    {\n        int local{9};\n        values[0] = local;\n    }\n    std::cout << values[0] << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Leaking means losing the ability to release an owned resource. A dangling pointer refers to an object whose lifetime ended. Double deletion tries to release the same resource twice. All three are design problems to prevent, not just runtime errors to hope a test catches."
+        }
+      ],
+      "takeaway": "Storage location and ownership are different ideas. Prefer an object that releases its resources automatically.",
+      "exerciseIds": ["practice-lifetimes"],
+      "previousId": "pointers",
+      "nextId": "smart-pointers"
+    },
+    {
+      "id": "smart-pointers",
+      "title": "Smart Pointers",
+      "description": "Make ownership visible in the type.",
+      "moduleId": "ownership",
+      "duration": 8,
+      "objectives": [
+        "Create exclusive ownership with unique_ptr",
+        "Use shared ownership only when required"
+      ],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "std::unique_ptr owns one dynamically allocated object exclusively. When the pointer is destroyed, it destroys its object. It cannot be copied, but ownership can be moved. std::make_unique constructs the object and returns its owner in one expression.\n\nstd::shared_ptr supports shared ownership through reference counting. The object is destroyed when the last shared owner disappears. std::weak_ptr observes shared ownership without extending lifetime and can help avoid ownership cycles."
+        },
+        {
+          "title": "See it in code",
+          "body": "After moving a unique_ptr, the source is empty and the destination owns the same object. Dereferencing owner accesses that object. Passing a unique_ptr by value transfers ownership into a function; passing an ordinary reference is better when the function only needs temporary access.",
+          "code": "#include <iostream>\n#include <memory>\n#include <utility>\n\nint main() {\n    auto original = std::make_unique<int>(42);\n    auto owner = std::move(original);\n    if (!original) std::cout << \"ownership transferred\\n\";\n    std::cout << *owner << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Do not construct two unique_ptr objects from the same raw pointer. Both would believe they own it. Do not choose shared_ptr merely to avoid thinking about lifetime: reference cycles can keep objects alive forever. Start with values, then exclusive ownership, then shared ownership only when the design requires it."
+        }
+      ],
+      "takeaway": "Use unique_ptr to express one owner. Use references or pointers for temporary access.",
+      "exerciseIds": ["practice-smart-pointers"],
+      "previousId": "lifetimes",
+      "nextId": "raii-move"
+    },
+    {
+      "id": "raii-move",
+      "title": "RAII and Move Semantics",
+      "description": "Tie resource safety to ordinary object lifetime.",
+      "moduleId": "ownership",
+      "duration": 10,
+      "objectives": ["Explain RAII", "Distinguish a move from a copy"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "RAII means Resource Acquisition Is Initialization. A resource is acquired by an object and released by that object's destructor. Scope exit handles cleanup, including early returns. The resource can be memory, a file handle, or a lock; the idea is ownership tied to lifetime.\n\nMove semantics let a type transfer resources instead of duplicating them. std::move does not move anything by itself: it casts an expression so a move operation may be selected. The actual type defines the transfer behavior."
+        },
+        {
+          "title": "See it in code",
+          "body": "destination receives the vector's content efficiently. source remains valid, but in general its state after a move is unspecified unless the type guarantees more. You may destroy it, assign to it, or call operations whose preconditions are satisfied. Do not assume a moved-from string or vector must be empty.",
+          "code": "#include <iostream>\n#include <vector>\n#include <utility>\n\nint main() {\n    std::vector<int> source{3, 6, 9};\n    std::vector<int> destination = std::move(source);\n    std::cout << destination.size() << \"\\n\";\n    source.clear();\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Moving a const object often copies because move operations typically need to modify the source. Avoid sprinkling std::move everywhere; returning a local value by name allows copy elision. Prefer the rule of zero: compose resource-managing members so custom lifetime code is unnecessary."
+        }
+      ],
+      "takeaway": "RAII makes cleanup automatic. Move semantics transfer resources; moved-from objects still need valid usage.",
+      "exerciseIds": ["practice-raii-move"],
+      "previousId": "smart-pointers",
+      "nextId": "auto-ranges"
+    },
+    {
+      "id": "auto-ranges",
+      "title": "auto and Range-Based Loops",
+      "description": "Remove repetition while keeping types intentional.",
+      "moduleId": "modern",
+      "duration": 8,
+      "objectives": ["Use type deduction", "Choose value, reference, or const reference in a loop"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "auto asks the compiler to deduce a type from an initializer. It remains a statically typed variable: after deduction, the type does not change. auto count = 3 deduces int, while auto ratio = 3.0 deduces double. Type deduction is especially useful for iterators and long library types.\n\nA range-based for loop visits each element. auto value makes a copy; auto& value refers to the original; const auto& value refers without allowing modification through that reference."
+        },
+        {
+          "title": "See it in code",
+          "body": "The first loop modifies the actual integers, producing 2, 4, and 6. Replacing auto& with auto would only modify a temporary copy each iteration. For small integers, copying in a read-only loop is cheap. const auto& is useful when copying a larger value would be expensive.",
+          "code": "#include <iostream>\n#include <vector>\n\nint main() {\n    std::vector<int> values{1, 2, 3};\n    for (auto& value : values) value *= 2;\n    for (const auto& value : values) std::cout << value << \" \";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "auto does not correct unintended integer division: auto ratio = 3 / 2 still gives an int with value 1. Also, auto x{1} and auto x = {1} do not mean the same thing in C++17; the latter deduces an initializer_list. Favor an expression whose type is evident to the reader."
+        }
+      ],
+      "takeaway": "Type deduction removes repeated names, not type rules. A reference in a loop determines whether edits persist.",
+      "exerciseIds": ["practice-auto-ranges"],
+      "previousId": "raii-move",
+      "nextId": "lambdas"
+    },
+    {
+      "id": "lambdas",
+      "title": "Lambdas and STL Algorithms",
+      "description": "Describe the operation; let an algorithm handle traversal.",
+      "moduleId": "modern",
+      "duration": 10,
+      "objectives": ["Write a lambda predicate", "Choose a named standard algorithm"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A lambda is an unnamed function object written where it is useful. [] is its capture list, () holds parameters, and {} holds the body. It can be passed to standard algorithms such as count_if, find_if, transform, and sort.\n\nAn algorithm name communicates intent: count_if says count the matching elements, while a hand-written loop makes the reader reconstruct that intention. A predicate is a callable returning whether an element meets a condition."
+        },
+        {
+          "title": "See it in code",
+          "body": "[threshold] captures a copy of the local value. [&threshold] would refer to the original instead. [] captures nothing. Explicit captures document dependencies. Algorithms use half-open ranges just like the iterator lesson. A sort comparator must provide a strict weak ordering; <= is generally an invalid comparator.",
+          "code": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    std::vector<int> values{2, 7, 1, 9};\n    const int threshold{5};\n    auto count = std::count_if(values.begin(), values.end(),\n        [threshold](int value) { return value > threshold; });\n    std::cout << count << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "A reference capture can dangle if the lambda outlives the referenced object. Prefer value capture for small values when storing or returning a lambda. Avoid a default capture that silently pulls in more state as a function grows."
+        }
+      ],
+      "takeaway": "Name the traversal with an algorithm; describe the custom rule with a small lambda.",
+      "exerciseIds": ["practice-lambdas"],
+      "previousId": "auto-ranges",
+      "nextId": "templates"
+    },
+    {
+      "id": "templates",
+      "title": "Templates and constexpr",
+      "description": "Express a reusable operation without losing type information.",
+      "moduleId": "modern",
+      "duration": 10,
+      "objectives": ["Write a function template", "Understand constant evaluation"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A function template describes a family of functions parameterized by types or values. The compiler instantiates an appropriate function when it is used. A template is not arbitrary code that works with everything: the operations inside it impose requirements on the chosen type.\n\nconstexpr means a function can participate in constant evaluation when its inputs and use permit it. It can also run at runtime. A constexpr variable requires a constant-expression initializer."
+        },
+        {
+          "title": "See it in code",
+          "body": "square(4) deduces T as int and can be evaluated at compile time. square(value) deduces double and runs using the input. static_assert checks a condition during compilation. The template requires multiplication and a result convertible to T; a type that cannot meet those requirements causes a compiler error.",
+          "code": "#include <iostream>\n\ntemplate <typename T>\nconstexpr T square(T value) {\n    return value * value;\n}\n\nint main() {\n    constexpr int size = square(4);\n    static_assert(size == 16, \"unexpected size\");\n    double value{}; std::cin >> value;\n    std::cout << square(value) << \"\\n\";\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Templates do not remove overflow, lifetime, or conversion concerns. A generic square<int> can still overflow. Keep template definitions visible at their use sites, typically in headers. C++20 concepts and C++23 facilities extend this subject, but this course and compiler intentionally target C++17."
+        }
+      ],
+      "takeaway": "Templates preserve types across reusable logic. constexpr allows constant evaluation; it does not force every call to compile time.",
+      "exerciseIds": ["practice-templates"],
+      "previousId": "lambdas",
+      "nextId": "errors"
+    },
+    {
+      "id": "errors",
+      "title": "Explicit Error Handling",
+      "description": "Make failure part of the interface.",
+      "moduleId": "modern",
+      "duration": 10,
+      "objectives": ["Represent absence with optional", "Check errors before using a value"],
+      "blocks": [
+        {
+          "title": "The idea",
+          "body": "A calculation may have no valid result. An interface should make that possibility visible. std::optional<T> stores either a T or no value. Returning std::nullopt represents absence without inventing a special value that might also be a valid result.\n\nC++ also supports exceptions for transferring control to an error handler. This browser compiler does not support exception handling, so runnable examples use explicit results. std::expected is a C++23 facility and is outside this C++17 runtime."
+        },
+        {
+          "title": "See it in code",
+          "body": "The if condition checks whether the optional contains a value. Only inside that branch do we dereference it with *. This is the same habit as checking a search result before using it. For more detail than presence or absence, a custom result type can contain a status and associated data.",
+          "code": "#include <iostream>\n#include <optional>\n\nstd::optional<int> divide(int a, int b) {\n    if (b == 0) return std::nullopt;\n    return a / b;\n}\n\nint main() {\n    int a{}, b{}; std::cin >> a >> b;\n    if (auto result = divide(a, b)) {\n        std::cout << *result << \"\\n\";\n    } else {\n        std::cout << \"undefined\\n\";\n    }\n}\n"
+        },
+        {
+          "title": "Think about the boundary",
+          "body": "Dereferencing an empty optional is invalid. value() throws when empty, so avoid that error path in this runtime. Validate inputs before dangerous arithmetic, including division by zero and signed overflow. A useful error response describes what went wrong and how the caller can recover."
+        }
+      ],
+      "takeaway": "Failure is information. Represent it explicitly and check before using a result.",
+      "exerciseIds": ["practice-errors"],
+      "previousId": "templates"
+    }
+  ]
+}

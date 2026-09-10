@@ -1,0 +1,6 @@
+dist
+node_modules
+public/runtime/bin
+public/runtime/memfs.mjs
+package-lock.json
+qa.html
