@@ -1,0 +1,945 @@
+[
+  {
+    "id": "practice-first-program",
+    "title": "Hello, C++!",
+    "difficulty": "Easy",
+    "description": "Print Hello, C++! followed by a newline. This program has no input. Print no additional text.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "",
+    "sampleOutput": "Hello, C++!",
+    "tests": [
+      {
+        "input": "",
+        "output": "Hello, C++!",
+        "hidden": false
+      }
+    ],
+    "hints": ["Use std::cout with a string literal.", "Put \\n inside the quotes to end the line."],
+    "concepts": ["Recognize main and a statement", "Print text with std::cout"],
+    "lessonId": "first-program"
+  },
+  {
+    "id": "practice-variables",
+    "title": "Age in Months",
+    "difficulty": "Easy",
+    "description": "Read a whole-number age from 0 to 120. Print the age in months, using 12 months per year.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "20",
+    "sampleOutput": "240",
+    "tests": [
+      {
+        "input": "20",
+        "output": "240",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "120",
+        "output": "1440",
+        "hidden": true
+      }
+    ],
+    "hints": ["Read into an initialized int.", "Multiply by 12."],
+    "concepts": ["Initialize variables", "Choose int, double, char, and bool"],
+    "lessonId": "variables"
+  },
+  {
+    "id": "practice-input-operators",
+    "title": "Sum of Two Numbers",
+    "difficulty": "Easy",
+    "description": "Read two integers, each between -1,000,000 and 1,000,000. Print their sum. Input values may be separated by spaces or newlines.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "5 7",
+    "sampleOutput": "12",
+    "tests": [
+      {
+        "input": "5 7",
+        "output": "12",
+        "hidden": false
+      },
+      {
+        "input": "-4 2",
+        "output": "-2",
+        "hidden": true
+      },
+      {
+        "input": "0\n0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "1000000 1000000",
+        "output": "2000000",
+        "hidden": true
+      }
+    ],
+    "hints": ["Use std::cin >> a >> b.", "Print a + b; do not print an input prompt."],
+    "concepts": ["Read whitespace-separated input", "Use arithmetic and comparison operators"],
+    "lessonId": "input-operators"
+  },
+  {
+    "id": "practice-control-flow",
+    "title": "Sum the Even Numbers",
+    "difficulty": "Easy",
+    "description": "Read n, with 0 ≤ n ≤ 1000. Print the sum of all even integers from 1 through n, inclusive.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "6",
+    "sampleOutput": "12",
+    "tests": [
+      {
+        "input": "6",
+        "output": "12",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "1",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "9",
+        "output": "20",
+        "hidden": true
+      },
+      {
+        "input": "1000",
+        "output": "250500",
+        "hidden": true
+      }
+    ],
+    "hints": ["Start an accumulator at zero.", "Either test i % 2 == 0, or advance by two."],
+    "concepts": ["Branch with if and else", "Repeat with for and while"],
+    "lessonId": "control-flow"
+  },
+  {
+    "id": "practice-function-basics",
+    "title": "A Square Function",
+    "difficulty": "Easy",
+    "description": "Read an integer n between -1000 and 1000. Define a function that calculates its square, call it from main, and print the result.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "7",
+    "sampleOutput": "49",
+    "tests": [
+      {
+        "input": "7",
+        "output": "49",
+        "hidden": false
+      },
+      {
+        "input": "-3",
+        "output": "9",
+        "hidden": true
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "1000",
+        "output": "1000000",
+        "hidden": true
+      }
+    ],
+    "hints": ["Place the function above main.", "Return n * n, then print the returned value."],
+    "concepts": ["Declare and call a function", "Pass values as parameters"],
+    "lessonId": "function-basics"
+  },
+  {
+    "id": "practice-return-overload",
+    "title": "Return the Maximum",
+    "difficulty": "Easy",
+    "description": "Read three integers between -1000 and 1000. Write a function that returns the greatest value, then print that value. Equal inputs are allowed.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "3 9 5",
+    "sampleOutput": "9",
+    "tests": [
+      {
+        "input": "3 9 5",
+        "output": "9",
+        "hidden": false
+      },
+      {
+        "input": "-9 -3 -7",
+        "output": "-3",
+        "hidden": true
+      },
+      {
+        "input": "4 4 4",
+        "output": "4",
+        "hidden": true
+      },
+      {
+        "input": "10 2 1",
+        "output": "10",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Consider the case where the maximum appears first.",
+      "Every path through the function must return."
+    ],
+    "concepts": ["Return on every required path", "Understand overload resolution"],
+    "lessonId": "return-overload"
+  },
+  {
+    "id": "practice-scope",
+    "title": "Swap by Reference",
+    "difficulty": "Easy",
+    "description": "Read two integers. Use a function with two reference parameters to swap them. Print the resulting first and second values separated by one space.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "3 8",
+    "sampleOutput": "8 3",
+    "tests": [
+      {
+        "input": "3 8",
+        "output": "8 3",
+        "hidden": false
+      },
+      {
+        "input": "-1 0",
+        "output": "0 -1",
+        "hidden": true
+      },
+      {
+        "input": "5 5",
+        "output": "5 5",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "The parameters need & to change the original objects.",
+      "Keep the first value in a temporary before overwriting it."
+    ],
+    "concepts": ["Identify block scope", "Modify a caller through a reference"],
+    "lessonId": "scope"
+  },
+  {
+    "id": "practice-decomposition",
+    "title": "Factorial, Carefully",
+    "difficulty": "Easy",
+    "description": "Read n, with 0 ≤ n ≤ 20. Write a function to compute n factorial and print it. Define 0 factorial as 1. Use long long for the result.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "5",
+    "sampleOutput": "120",
+    "tests": [
+      {
+        "input": "5",
+        "output": "120",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "1",
+        "hidden": true
+      },
+      {
+        "input": "1",
+        "output": "1",
+        "hidden": true
+      },
+      {
+        "input": "20",
+        "output": "2432902008176640000",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "The multiplication identity is 1, not 0.",
+      "20! fits in signed long long but not int."
+    ],
+    "concepts": ["Separate I/O from calculation", "Test an operation at its boundaries"],
+    "lessonId": "decomposition"
+  },
+  {
+    "id": "practice-strings",
+    "title": "Count the Vowels",
+    "difficulty": "Intermediate",
+    "description": "Read one line of ASCII text, possibly empty. Count English vowels (a, e, i, o, u) in either uppercase or lowercase and print the count.",
+    "starterCode": "#include <iostream>\n#include <string>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "Hello C++",
+    "sampleOutput": "2",
+    "tests": [
+      {
+        "input": "Hello C++",
+        "output": "2",
+        "hidden": false
+      },
+      {
+        "input": "AEIOU aeiou",
+        "output": "10",
+        "hidden": true
+      },
+      {
+        "input": "rhythm",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "",
+        "output": "0",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Read with getline so spaces are preserved.",
+      "A string containing all ten vowel forms can help with membership checks."
+    ],
+    "concepts": ["Use std::string and getline", "Inspect characters safely"],
+    "lessonId": "strings"
+  },
+  {
+    "id": "practice-sequences",
+    "title": "Sequence Bounds",
+    "difficulty": "Intermediate",
+    "description": "Read n (1–100), followed by n integers between -1000 and 1000. Store them in a vector and print the smallest and largest values, separated by a space.",
+    "starterCode": "#include <iostream>\n#include <vector>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "5\n8 -2 4 9 0",
+    "sampleOutput": "-2 9",
+    "tests": [
+      {
+        "input": "5\n8 -2 4 9 0",
+        "output": "-2 9",
+        "hidden": false
+      },
+      {
+        "input": "1\n7",
+        "output": "7 7",
+        "hidden": true
+      },
+      {
+        "input": "3\n-9 -2 -5",
+        "output": "-9 -2",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "The input guarantees at least one element.",
+      "Initialize both bounds from the first element, not from zero."
+    ],
+    "concepts": ["Distinguish fixed and dynamic size", "Use vector without out-of-bounds access"],
+    "lessonId": "sequences"
+  },
+  {
+    "id": "practice-maps-sets",
+    "title": "Distinct Values",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–100), followed by n integers. Insert the values into a set and print the number of distinct values.",
+    "starterCode": "#include <iostream>\n#include <set>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "6\n2 2 4 1 4 5",
+    "sampleOutput": "4",
+    "tests": [
+      {
+        "input": "6\n2 2 4 1 4 5",
+        "output": "4",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "4\n-1 -1 -1 -1",
+        "output": "1",
+        "hidden": true
+      }
+    ],
+    "hints": ["A set keeps only one copy of each value.", "The answer is the final set size."],
+    "concepts": ["Count with std::map", "Deduplicate with std::set"],
+    "lessonId": "maps-sets"
+  },
+  {
+    "id": "practice-iterators",
+    "title": "Put Values in Order",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–100), then n integers. Sort them in ascending order and print them separated by spaces. For n = 0, print an empty line.",
+    "starterCode": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "5\n3 1 4 1 2",
+    "sampleOutput": "1 1 2 3 4",
+    "tests": [
+      {
+        "input": "5\n3 1 4 1 2",
+        "output": "1 1 2 3 4",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "",
+        "hidden": true
+      },
+      {
+        "input": "4\n-2 8 0 -2",
+        "output": "-2 -2 0 8",
+        "hidden": true
+      }
+    ],
+    "hints": ["Pass begin() and end() to std::sort.", "An empty range is already sorted."],
+    "concepts": ["Use begin and end", "Understand half-open ranges"],
+    "lessonId": "iterators"
+  },
+  {
+    "id": "practice-classes",
+    "title": "A Rectangle Type",
+    "difficulty": "Intermediate",
+    "description": "Read two integers width and height (0–1000). Model a Rectangle with an area member function and print its area.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "8 5",
+    "sampleOutput": "40",
+    "tests": [
+      {
+        "input": "8 5",
+        "output": "40",
+        "hidden": false
+      },
+      {
+        "input": "0 9",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "1000 1000",
+        "output": "1000000",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "The member function can directly read the object's width and height.",
+      "Declare a read-only member function const."
+    ],
+    "concepts": ["Define a class", "Create independent objects"],
+    "lessonId": "classes"
+  },
+  {
+    "id": "practice-constructors",
+    "title": "Protect the Balance",
+    "difficulty": "Intermediate",
+    "description": "Read an initial balance and a withdrawal amount (each 0–10000). Implement an Account that withdraws only when funds suffice. Print the remaining balance; an unaffordable withdrawal leaves it unchanged.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "100 30",
+    "sampleOutput": "70",
+    "tests": [
+      {
+        "input": "100 30",
+        "output": "70",
+        "hidden": false
+      },
+      {
+        "input": "20 50",
+        "output": "20",
+        "hidden": true
+      },
+      {
+        "input": "0 0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "10 10",
+        "output": "0",
+        "hidden": true
+      }
+    ],
+    "hints": ["Keep balance_ private.", "Check the amount before subtracting it."],
+    "concepts": ["Initialize members in a constructor", "Protect an invariant"],
+    "lessonId": "constructors"
+  },
+  {
+    "id": "practice-polymorphism",
+    "title": "One Shape Interface",
+    "difficulty": "Intermediate",
+    "description": "Read a shape word (square or rectangle), then width and height (0–100). For square, area is width squared; ignore height. For rectangle, area is width times height. Use a shared virtual area interface and print the area.",
+    "starterCode": "#include <iostream>\n#include <string>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "square 4 9",
+    "sampleOutput": "16",
+    "tests": [
+      {
+        "input": "square 4 9",
+        "output": "16",
+        "hidden": false
+      },
+      {
+        "input": "rectangle 4 9",
+        "output": "36",
+        "hidden": true
+      },
+      {
+        "input": "square 0 5",
+        "output": "0",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Create a base interface with a virtual area() const.",
+      "Keep the selected object alive while using a base reference."
+    ],
+    "concepts": ["Override a virtual function", "Use a virtual destructor in an interface"],
+    "lessonId": "polymorphism"
+  },
+  {
+    "id": "practice-composition",
+    "title": "A Basket of Values",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–20), followed by n pairs of a single-word product name and integer price (0–10000). Store Product values in a vector and print the total price.",
+    "starterCode": "#include <iostream>\n#include <string>\n#include <vector>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "3\npen 2 book 12 bag 30",
+    "sampleOutput": "44",
+    "tests": [
+      {
+        "input": "3\npen 2 book 12 bag 30",
+        "output": "44",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "2\na 0 b 3",
+        "output": "3",
+        "hidden": true
+      }
+    ],
+    "hints": ["Each Product can hold a string and an int.", "The vector owns the product values."],
+    "concepts": ["Model has-a relationships", "Prefer the rule of zero"],
+    "lessonId": "composition"
+  },
+  {
+    "id": "practice-pointers",
+    "title": "Through an Address",
+    "difficulty": "Intermediate",
+    "description": "Read an integer n (-1000–1000). Point to the variable with an int*, double the value through that pointer, and print the variable.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "7",
+    "sampleOutput": "14",
+    "tests": [
+      {
+        "input": "7",
+        "output": "14",
+        "hidden": false
+      },
+      {
+        "input": "-3",
+        "output": "-6",
+        "hidden": true
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "hidden": true
+      }
+    ],
+    "hints": ["Take the address with &n.", "Use *p to read or modify the pointed-to integer."],
+    "concepts": ["Take an address and dereference safely", "Distinguish aliases from ownership"],
+    "lessonId": "pointers"
+  },
+  {
+    "id": "practice-lifetimes",
+    "title": "A Managed Buffer",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–100), then n integers (-1000–1000). Store the values in a vector and print their sum. Avoid raw new and delete.",
+    "starterCode": "#include <iostream>\n#include <vector>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "4\n1 2 3 4",
+    "sampleOutput": "10",
+    "tests": [
+      {
+        "input": "4\n1 2 3 4",
+        "output": "10",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "3\n-5 2 -1",
+        "output": "-4",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Create a vector with n elements.",
+      "The vector releases its allocation when it leaves scope."
+    ],
+    "concepts": [
+      "Distinguish automatic and dynamic storage",
+      "Avoid manual allocation when a container fits"
+    ],
+    "lessonId": "lifetimes"
+  },
+  {
+    "id": "practice-smart-pointers",
+    "title": "Transfer Ownership",
+    "difficulty": "Intermediate",
+    "description": "Read an integer (-1000–1000). Create a unique_ptr<int> owning it, transfer ownership to another unique_ptr, and print the owned value plus one.",
+    "starterCode": "#include <iostream>\n#include <memory>\n#include <utility>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "41",
+    "sampleOutput": "42",
+    "tests": [
+      {
+        "input": "41",
+        "output": "42",
+        "hidden": false
+      },
+      {
+        "input": "-1",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "0",
+        "output": "1",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Use std::make_unique<int>(n).",
+      "std::move allows the unique_ptr move constructor to transfer ownership."
+    ],
+    "concepts": [
+      "Create exclusive ownership with unique_ptr",
+      "Use shared ownership only when required"
+    ],
+    "lessonId": "smart-pointers"
+  },
+  {
+    "id": "practice-raii-move",
+    "title": "Move a Collection",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–100), then n integers. Move a populated vector into a second vector. Print the second vector's size and sum, separated by a space.",
+    "starterCode": "#include <iostream>\n#include <vector>\n#include <utility>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "3\n3 6 9",
+    "sampleOutput": "3 18",
+    "tests": [
+      {
+        "input": "3\n3 6 9",
+        "output": "3 18",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "0 0",
+        "hidden": true
+      },
+      {
+        "input": "2\n-1 1",
+        "output": "2 0",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Move only after populating the source vector.",
+      "Calculate using the destination, without assuming a particular source size."
+    ],
+    "concepts": ["Explain RAII", "Distinguish a move from a copy"],
+    "lessonId": "raii-move"
+  },
+  {
+    "id": "practice-auto-ranges",
+    "title": "Edit a Range",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–100), then n integers (-1000–1000). Double each element in place with a range-based loop and print the resulting sequence separated by spaces.",
+    "starterCode": "#include <iostream>\n#include <vector>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "3\n1 2 3",
+    "sampleOutput": "2 4 6",
+    "tests": [
+      {
+        "input": "3\n1 2 3",
+        "output": "2 4 6",
+        "hidden": false
+      },
+      {
+        "input": "0",
+        "output": "",
+        "hidden": true
+      },
+      {
+        "input": "3\n-1 0 5",
+        "output": "-2 0 10",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Use auto& when the loop should change the vector.",
+      "Printing a copied int is fine."
+    ],
+    "concepts": ["Use type deduction", "Choose value, reference, or const reference in a loop"],
+    "lessonId": "auto-ranges"
+  },
+  {
+    "id": "practice-lambdas",
+    "title": "A Focused Predicate",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–100) and a threshold, followed by n integers. Use std::count_if with a lambda to count values strictly greater than the threshold. Print the count.",
+    "starterCode": "#include <iostream>\n#include <vector>\n#include <algorithm>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "5 3\n1 5 3 7 4",
+    "sampleOutput": "3",
+    "tests": [
+      {
+        "input": "5 3\n1 5 3 7 4",
+        "output": "3",
+        "hidden": false
+      },
+      {
+        "input": "0 5",
+        "output": "0",
+        "hidden": true
+      },
+      {
+        "input": "3 -2\n-2 -1 0",
+        "output": "2",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Capture threshold by value.",
+      "The comparison is strictly greater, so equality does not count."
+    ],
+    "concepts": ["Write a lambda predicate", "Choose a named standard algorithm"],
+    "lessonId": "lambdas"
+  },
+  {
+    "id": "practice-templates",
+    "title": "A Generic Minimum",
+    "difficulty": "Intermediate",
+    "description": "Read two integers (-1000–1000). Implement a constexpr function template that returns the smaller of two values of the same type. Print its result for the input.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "8 3",
+    "sampleOutput": "3",
+    "tests": [
+      {
+        "input": "8 3",
+        "output": "3",
+        "hidden": false
+      },
+      {
+        "input": "-5 -2",
+        "output": "-5",
+        "hidden": true
+      },
+      {
+        "input": "7 7",
+        "output": "7",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Use template<typename T> above the function.",
+      "Return either a or b using a comparison."
+    ],
+    "concepts": ["Write a function template", "Understand constant evaluation"],
+    "lessonId": "templates"
+  },
+  {
+    "id": "practice-errors",
+    "title": "A Result That May Be Absent",
+    "difficulty": "Intermediate",
+    "description": "Read two integers a and b (-1000–1000). Return an optional integer quotient from a function. Print undefined if b is zero; otherwise print a / b using C++ integer division.",
+    "starterCode": "#include <iostream>\n#include <optional>\n\nint main() {\n    // Read the input, solve the task, and print the result.\n    return 0;\n}\n",
+    "sampleInput": "9 2",
+    "sampleOutput": "4",
+    "tests": [
+      {
+        "input": "9 2",
+        "output": "4",
+        "hidden": false
+      },
+      {
+        "input": "4 0",
+        "output": "undefined",
+        "hidden": true
+      },
+      {
+        "input": "-9 2",
+        "output": "-4",
+        "hidden": true
+      },
+      {
+        "input": "0 3",
+        "output": "0",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Return std::nullopt for a zero divisor.",
+      "Check the optional before dereferencing."
+    ],
+    "concepts": ["Represent absence with optional", "Check errors before using a value"],
+    "lessonId": "errors"
+  },
+  {
+    "id": "project-calculator",
+    "title": "CLI Calculator",
+    "difficulty": "Intermediate",
+    "description": "Read a, an operator, and b (integers -1000–1000). Print the result for +, -, *, or /. Division truncates toward zero. Print undefined for division by zero and invalid for any other operator. Print no prompts. Each run processes one expression.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Build your project here.\n    return 0;\n}\n",
+    "sampleInput": "12 + 7",
+    "sampleOutput": "19",
+    "tests": [
+      {
+        "input": "12 + 7",
+        "output": "19",
+        "hidden": false
+      },
+      {
+        "input": "9 / 2",
+        "output": "4",
+        "hidden": true
+      },
+      {
+        "input": "-9 / 2",
+        "output": "-4",
+        "hidden": true
+      },
+      {
+        "input": "6 * -3",
+        "output": "-18",
+        "hidden": true
+      },
+      {
+        "input": "4 / 0",
+        "output": "undefined",
+        "hidden": true
+      },
+      {
+        "input": "4 ^ 2",
+        "output": "invalid",
+        "hidden": true
+      },
+      {
+        "input": "2 - 9",
+        "output": "-7",
+        "hidden": true
+      }
+    ],
+    "hints": ["Read the operator into a char.", "Check the divisor before evaluating division."],
+    "concepts": ["Functions", "Conditions", "Integer arithmetic"],
+    "lessonId": "decomposition",
+    "projectId": "calculator"
+  },
+  {
+    "id": "project-guessing",
+    "title": "Number Guessing Game",
+    "difficulty": "Intermediate",
+    "description": "Read secret (1–100), then n (0–20), then n guesses (1–100). The secret is supplied as input so tests are reproducible. For each processed guess print low, high, or correct on its own line. Stop after the correct guess. Finally print attempts N, where N is the number of guesses actually processed. This terminal uses prepared input rather than interactive prompts.",
+    "starterCode": "#include <iostream>\n\nint main() {\n    // Build your project here.\n    return 0;\n}\n",
+    "sampleInput": "42 4\n10 80 42 50",
+    "sampleOutput": "low\nhigh\ncorrect\nattempts 3",
+    "tests": [
+      {
+        "input": "42 4\n10 80 42 50",
+        "output": "low\nhigh\ncorrect\nattempts 3",
+        "hidden": false
+      },
+      {
+        "input": "7 0",
+        "output": "attempts 0",
+        "hidden": true
+      },
+      {
+        "input": "5 3\n5 9 1",
+        "output": "correct\nattempts 1",
+        "hidden": true
+      },
+      {
+        "input": "50 2\n1 99",
+        "output": "low\nhigh\nattempts 2",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "The guess that succeeds still counts as an attempt.",
+      "With zero guesses, only the attempts line is printed."
+    ],
+    "concepts": ["Loops", "Conditions", "State"],
+    "lessonId": "control-flow",
+    "projectId": "guessing"
+  },
+  {
+    "id": "project-contacts",
+    "title": "Simple Contact Manager",
+    "difficulty": "Intermediate",
+    "description": "Read n (0–50), then n commands. add NAME PHONE stores or replaces a contact. get NAME prints its phone or not found. remove NAME deletes a contact if present and prints nothing. Names and phones are single whitespace-free words; phone numbers must remain strings to preserve leading zeros. State is retained within one run. Print only lookup results.",
+    "starterCode": "#include <iostream>\n#include <string>\n#include <map>\n\nint main() {\n    // Build your project here.\n    return 0;\n}\n",
+    "sampleInput": "5\nadd Ada 0123\nget Ada\nget Grace\nremove Ada\nget Ada",
+    "sampleOutput": "0123\nnot found\nnot found",
+    "tests": [
+      {
+        "input": "5\nadd Ada 0123\nget Ada\nget Grace\nremove Ada\nget Ada",
+        "output": "0123\nnot found\nnot found",
+        "hidden": false
+      },
+      {
+        "input": "4\nadd A 12\nadd A 34\nget A\nget B",
+        "output": "34\nnot found",
+        "hidden": true
+      },
+      {
+        "input": "2\nremove A\nget A",
+        "output": "not found",
+        "hidden": true
+      },
+      {
+        "input": "0",
+        "output": "",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "Keep phone numbers as strings.",
+      "find avoids inserting a missing contact during lookup."
+    ],
+    "concepts": ["std::map", "Strings", "Functions"],
+    "lessonId": "maps-sets",
+    "projectId": "contacts"
+  },
+  {
+    "id": "project-text-statistics",
+    "title": "Text Statistics Tool",
+    "difficulty": "Intermediate",
+    "description": "Read ASCII text until EOF. A word is a maximal sequence of non-whitespace characters; punctuation belongs to the word. Count letters A–Z and a–z only. Print three lines: words N, letters N, longest N. longest is the length of the longest word including punctuation. Empty input gives all zeros.",
+    "starterCode": "#include <iostream>\n#include <string>\n\nint main() {\n    // Build your project here.\n    return 0;\n}\n",
+    "sampleInput": "Hello, C++!\nBuild things.",
+    "sampleOutput": "words 4\nletters 17\nlongest 7",
+    "tests": [
+      {
+        "input": "Hello, C++!\nBuild things.",
+        "output": "words 4\nletters 17\nlongest 7",
+        "hidden": false
+      },
+      {
+        "input": "",
+        "output": "words 0\nletters 0\nlongest 0",
+        "hidden": true
+      },
+      {
+        "input": "  one\tTWO\n3  ",
+        "output": "words 3\nletters 6\nlongest 3",
+        "hidden": true
+      },
+      {
+        "input": "... 42",
+        "output": "words 2\nletters 0\nlongest 3",
+        "hidden": true
+      }
+    ],
+    "hints": [
+      "operator>> reads words and naturally skips whitespace.",
+      "Count letters separately from the word length."
+    ],
+    "concepts": ["Strings", "Streams", "Character handling"],
+    "lessonId": "strings",
+    "projectId": "text-statistics"
+  }
+]

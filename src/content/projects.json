@@ -1,0 +1,82 @@
+[
+  {
+    "id": "calculator",
+    "title": "CLI Calculator",
+    "description": "A small, reliable calculator with an explicit policy for invalid operations.",
+    "duration": "30–45 min",
+    "difficulty": "Beginner",
+    "requirements": [
+      "Read one expression as integer, operator, integer.",
+      "Support +, -, *, and integer division /.",
+      "Print undefined for division by zero, or invalid for an unknown operator.",
+      "Keep calculation separate from stream input and output."
+    ],
+    "milestones": [
+      "Parse the three input values",
+      "Implement the four operations",
+      "Handle invalid operations and verify all tests"
+    ],
+    "concepts": ["Functions", "Conditions", "Integer arithmetic"],
+    "exerciseId": "project-calculator"
+  },
+  {
+    "id": "guessing",
+    "title": "Number Guessing Game",
+    "description": "Give useful feedback, count attempts, and stop at the right moment.",
+    "duration": "30–45 min",
+    "difficulty": "Beginner",
+    "requirements": [
+      "Read a secret number and a sequence of guesses.",
+      "Respond low, high, or correct to each guess.",
+      "Stop processing after a correct guess.",
+      "Print attempts N, counting only processed guesses."
+    ],
+    "milestones": [
+      "Read the secret and guess count",
+      "Give feedback for each guess",
+      "Stop on success and count attempts correctly"
+    ],
+    "concepts": ["Loops", "Conditions", "State"],
+    "exerciseId": "project-guessing"
+  },
+  {
+    "id": "contacts",
+    "title": "Simple Contact Manager",
+    "description": "A command-based address book that handles lookup, replacement, and deletion.",
+    "duration": "45–60 min",
+    "difficulty": "Intermediate",
+    "requirements": [
+      "Support add, get, and remove commands.",
+      "Adding an existing name replaces its number.",
+      "Missing lookups return not found.",
+      "Keep contacts in memory for the duration of a run."
+    ],
+    "milestones": [
+      "Parse commands in a loop",
+      "Store and update contacts by name",
+      "Implement lookup and removal, then verify edge cases"
+    ],
+    "concepts": ["std::map", "Strings", "Functions"],
+    "exerciseId": "project-contacts"
+  },
+  {
+    "id": "text-statistics",
+    "title": "Text Statistics Tool",
+    "description": "Make the rules of a text-analysis program precise and testable.",
+    "duration": "45–60 min",
+    "difficulty": "Intermediate",
+    "requirements": [
+      "Read all input until the end of the stream.",
+      "Count ASCII letters and whitespace-delimited words.",
+      "Find the length of the longest word, including its punctuation.",
+      "Handle empty input and multiple lines."
+    ],
+    "milestones": [
+      "Define the three metrics",
+      "Read the complete input stream",
+      "Check whitespace, punctuation, and empty input"
+    ],
+    "concepts": ["Strings", "Streams", "Character handling"],
+    "exerciseId": "project-text-statistics"
+  }
+]
